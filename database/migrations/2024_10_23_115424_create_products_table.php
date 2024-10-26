@@ -7,7 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    private const TABLE_NAME = 'users';
+    private const TABLE_NAME = 'products';
 
     /**
      * Run the migrations.
@@ -16,9 +16,8 @@ return new class extends Migration {
     {
         Schema::create(self::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name', 255);
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

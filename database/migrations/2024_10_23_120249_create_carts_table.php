@@ -7,7 +7,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    private const TABLE_NAME = 'users';
+    private const TABLE_NAME = 'carts';
+    private const FOREIGN_TABLE_NAME = 'users';
 
     /**
      * Run the migrations.
@@ -16,9 +17,7 @@ return new class extends Migration {
     {
         Schema::create(self::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('user_id')->unique()->constrained(self::FOREIGN_TABLE_NAME);
             $table->timestamps();
         });
     }
