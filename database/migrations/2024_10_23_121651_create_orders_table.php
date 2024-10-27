@@ -18,6 +18,7 @@ return new class extends Migration {
         Schema::create(self::TABLE_NAME, function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique()->constrained(self::FOREIGN_TABLE_NAME);
+            $table->string('status')->nullable(false);
             $table->timestamps();
         });
     }

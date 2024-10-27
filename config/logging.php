@@ -117,6 +117,10 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'createorder' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/createorder/laravel.log'),
+        ],
     ],
 
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthorizationController;
@@ -25,5 +26,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('product/list', [ProductController::class, 'list']);
     Route::post('cart/product/add', [CartController::class, 'addProduct']);
     Route::post('cart/product/delete', [CartController::class, 'deleteProduct']);
+    Route::post('order/create', [OrderController::class, 'create']);
 });
 
