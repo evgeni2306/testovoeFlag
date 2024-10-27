@@ -17,7 +17,7 @@ class AuthorizationController extends Controller
     {
         $requestData = $request->validated();
         $user = User::query()->create($requestData);
-        $token = $user->createToken('token')->accessToken;
+        $token = $user->createToken('token')->plainTextToken;
 
         return response()->json(['token' => $token], 200, ['Content-Type' => 'string']);
     }
@@ -27,7 +27,7 @@ class AuthorizationController extends Controller
         $requestData = $request->validated();
         if (Auth::attempt($requestData)) {
             $user = Auth::user();
-            $token = $user->createToken('token')->accessToken;
+            $token = $user->createToken('token')->plainTextToken;
 
             return response()->json(['token' => $token], 200, ['Content-Type' => 'string']);
         } else {
