@@ -21,4 +21,7 @@ generate-key:
 nginx-restart:
 	@docker-compose restart nginx
 
+seed:
+	@docker-compose exec --user=www php php artisan db:seed --class=ProductSeeder
+
 
