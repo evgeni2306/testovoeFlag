@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Cases\CreateOrderCase;
 use App\Cases\PayOrderCase;
+use App\Cases\UpdateOrderCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrderRequest;
 use Illuminate\Http\JsonResponse;
@@ -31,8 +32,10 @@ class OrderController extends Controller
         return response()->json(['update_url' => $updateRoute], 200, ['Content-Type' => 'string']);
     }
 
-    public function update(int $id)
+    public function update(int $id, UpdateOrderCase $case): JsonResponse
     {
+        $case->handle($id);
 
+        return response()->json(['message' => 'success'], 200, ['Content-Type' => 'string']);
     }
 }
