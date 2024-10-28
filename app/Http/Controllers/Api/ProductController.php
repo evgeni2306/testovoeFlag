@@ -24,7 +24,8 @@ class ProductController extends Controller
     public function list(GetProductListRequest $request, GetProductListCase $case): JsonResponse
     {
         $requestData = $request->validated();
-        $products = $case->handle($requestData['sort_type']);
+        $sortType = $requestData['sort_type'] ?? null;
+        $products = $case->handle($sortType);
 
         return response()->json(['products' => $products], 200, ['Content-Type' => 'string']);
     }

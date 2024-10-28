@@ -29,5 +29,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('order/create', [OrderController::class, 'create']);
     Route::post('order/{id}/pay/{type}', [OrderController::class, 'pay'])->name('pay_order');
     Route::post('order/{id}/update', [OrderController::class, 'update'])->name('update_order');
+    Route::post('order/get', [OrderController::class, 'get']);
+    Route::post('order/list', [OrderController::class, 'list']);
 });
 
