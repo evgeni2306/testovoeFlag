@@ -27,5 +27,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('cart/product/add', [CartController::class, 'addProduct']);
     Route::post('cart/product/delete', [CartController::class, 'deleteProduct']);
     Route::post('order/create', [OrderController::class, 'create']);
+    Route::post('order/{id}/pay/{type}', [OrderController::class, 'pay'])->name('pay_order');
+    Route::post('order/{id}/update', [OrderController::class, 'update'])->name('update_order');
 });
 

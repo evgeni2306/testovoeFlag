@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Log;
 class CreateOrderCase
 {
     private const LOG_CHANNEL_NAME = 'createorder';
+    private const PAYMENT_ROUTE_NAME = 'pay_order';
 
-    public function handle(): int
+    public function handle(string $paymentType): string
     {
         DB::beginTransaction();
         try {
@@ -34,6 +35,8 @@ class CreateOrderCase
             }
             OrderProduct::query()->insert($orderProductsArr);
             $cart->delete();
+
+            $paymentRoute = route(self::PAYMENT_ROUTE_NAME, ['id' => $order->id, 'type' => $paymentType]);
         } catch (Exception $exception) {
             DB::rollBack();
             Log::channel(self::LOG_CHANNEL_NAME)->info($exception->getMessage());
@@ -41,6 +44,6 @@ class CreateOrderCase
         }
         DB::commit();
 
-        return $order->id;
+        return $paymentRoute;
     }
 }
