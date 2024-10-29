@@ -121,6 +121,10 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/createorder/laravel.log'),
         ],
+        'registration' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/registration/laravel.log'),
+        ],
     ],
 
 ];

@@ -6,11 +6,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Cases\CreateOrderCase;
 use App\Cases\GetOrderListCase;
+use App\Cases\GetOrderCase;
 use App\Cases\PayOrderCase;
 use App\Cases\UpdateOrderCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrderRequest;
-use App\Http\Requests\OrderListRequest;
+use App\Http\Requests\GetOrderListRequest;
+use App\Http\Requests\GetOrderRequest;
 use Illuminate\Http\JsonResponse;
 
 class OrderController extends Controller
@@ -41,7 +43,7 @@ class OrderController extends Controller
         return response()->json(['message' => 'success'], 200, ['Content-Type' => 'string']);
     }
 
-    public function list(OrderListRequest $request, GetOrderListCase $case): JsonResponse
+    public function list(GetOrderListRequest $request, GetOrderListCase $case): JsonResponse
     {
         $requestData = $request->validated();
         $sortType = $requestData['sort_type'] ?? null;
@@ -52,7 +54,13 @@ class OrderController extends Controller
         return response()->json(['orders' => $orderList], 200, ['Content-Type' => 'string']);
     }
 
-    public function get(): JsonResponse
+    public function get(GetOrderRequest $request, GetOrderCase $case): JsonResponse
     {
+        $requestData = $request->validated();
+        $orderId = (int)$requestData['id'];
+
+        $order = $case->handle($orderId);
+
+        return response()->json(['order' => $order], 200, ['Content-Type' => 'string']);
     }
 }

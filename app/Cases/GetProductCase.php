@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class GetProductCase
 {
-    public function handle($productId): array
+    public function handle(int $productId): array
     {
         $product = Product::query()->findOrFail($productId);
 

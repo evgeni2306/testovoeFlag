@@ -16,7 +16,8 @@ class ProductController extends Controller
     public function get(GetProductRequest $request, GetProductCase $case): JsonResponse
     {
         $requestData = $request->validated();
-        $product = $case->handle($requestData['id']);
+        $productId = (int)$requestData['id'];
+        $product = $case->handle($productId);
 
         return response()->json(['product' => $product], 200, ['Content-Type' => 'string']);
     }
