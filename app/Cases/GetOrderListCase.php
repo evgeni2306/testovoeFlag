@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class GetOrderListCase
 {
+    /**
+     * @param string|null $sortType
+     * @param string|null $statusFilter
+     * @return array
+     */
     public function handle(string $sortType = null, string $statusFilter = null): array
     {
         $userId = Auth::id();

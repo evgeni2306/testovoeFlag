@@ -10,6 +10,9 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class   RegistrationRequest extends FormRequest
 {
+    /**
+     * @return array[]
+     */
     public function rules(): array
     {
         return [
@@ -18,6 +21,10 @@ class   RegistrationRequest extends FormRequest
         ];
     }
 
+    /**
+     * @param Validator $validator
+     * @return void
+     */
     protected function failedValidation(Validator $validator): void
     {
         $errors = $validator->errors();

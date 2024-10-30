@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DeleteProductFromCartCase
 {
+    /**
+     * @param int $productId
+     * @return void
+     */
     public function handle(int $productId): void
     {
         $userId = Auth::id();

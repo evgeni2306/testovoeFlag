@@ -8,6 +8,10 @@ use App\Models\Product;
 
 class GetProductListCase
 {
+    /**
+     * @param string|null $sortType
+     * @return array
+     */
     public function handle(string $sortType = null): array
     {
         $products = Product::query();

@@ -1,4 +1,4 @@
-install: cp-env up nginx-restart  composer-install   migrate generate-key
+install: cp-env up nginx-restart  composer-install   migrate generate-key seed
 
 up:
 	@docker-compose up -d

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class GetOrderCase
 {
+    /**
+     * @param int $orderId
+     * @return array
+     */
     public function handle(int $orderId): array
     {
         $userId = Auth::id();

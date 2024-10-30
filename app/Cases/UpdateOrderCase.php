@@ -10,6 +10,12 @@ use App\Models\Order;
 
 class UpdateOrderCase
 {
+    /**
+     * @param int $oderId
+     * @return void
+     * @throws UpdateOrderException
+     * @throws \Throwable
+     */
     public function handle(int $oderId): void
     {
         $order = Order::query()->findOrFail($oderId);

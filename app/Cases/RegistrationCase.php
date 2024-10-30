@@ -14,6 +14,12 @@ class RegistrationCase
 {
     private const LOG_CHANNEL_NAME = 'registration';
 
+    /**
+     * @param string $email
+     * @param string $password
+     * @return string
+     * @throws RegistrationException
+     */
     public function handle(string $email, string $password): string
     {
         DB::beginTransaction();

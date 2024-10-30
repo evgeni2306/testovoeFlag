@@ -7,10 +7,16 @@ namespace App\Cases;
 use App\Models\Cart;
 use App\Models\CartProduct;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class AddProductInCartCase
 {
 
+    /**
+     * @param int $productId
+     * @return void
+     * @throws Throwable
+     */
     public function handle(int $productId): void
     {
         $userId = Auth::id();

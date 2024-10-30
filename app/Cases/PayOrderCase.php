@@ -14,6 +14,13 @@ class PayOrderCase
 {
     private const UPDATE_ROUTE_NAME = 'update_order';
 
+    /**
+     * @param int $orderId
+     * @param string $paymentType
+     * @return string
+     * @throws PayOrderException
+     * @throws UnknownPaymentTypeException
+     */
     public function handle(int $orderId, string $paymentType): string
     {
         if (TypesOfPaymentEnum::tryFrom($paymentType) === null) {

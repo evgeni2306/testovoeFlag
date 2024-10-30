@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Enums\OrderStatusesEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class CreateOrderCase
 {
     private const LOG_CHANNEL_NAME = 'createorder';
     private const PAYMENT_ROUTE_NAME = 'pay_order';
 
+    /**
+     * @param string $paymentType
+     * @return string
+     * @throws CreateOrderException
+     * @throws Throwable
+     */
     public function handle(string $paymentType): string
     {
         DB::beginTransaction();

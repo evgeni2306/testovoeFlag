@@ -13,6 +13,11 @@ use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
+    /**
+     * @param GetProductRequest $request
+     * @param GetProductCase $case
+     * @return JsonResponse
+     */
     public function get(GetProductRequest $request, GetProductCase $case): JsonResponse
     {
         $requestData = $request->validated();
@@ -22,6 +27,11 @@ class ProductController extends Controller
         return response()->json(['product' => $product], 200, ['Content-Type' => 'string']);
     }
 
+    /**
+     * @param GetProductListRequest $request
+     * @param GetProductListCase $case
+     * @return JsonResponse
+     */
     public function list(GetProductListRequest $request, GetProductListCase $case): JsonResponse
     {
         $requestData = $request->validated();
